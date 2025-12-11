@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+</head>
+<body>
+   
+  <div class="container">
+        <header>
+            <h1><i class="fas fa-wallet"></i> Personal Expense Tracker</h1>
+            <p class="subtitle">Track your daily expenses easily</p>
+        </header>
+
+        <main>
+            <!-- Add Expense Section -->
+            <section class="add-expense-section">
+                <h2><i class="fas fa-plus-circle"></i> Add New Expense</h2>
+                <form id="expenseForm">
+                    <div class="form-group">
+                        <label for="description"><i class="fas fa-pen"></i> Description</label>
+                        <input type="text" id="description" placeholder="What did you spend on?" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="amount"><i class="fas fa-rupee-sign"></i> Amount (₹)</label>
+                            <input type="number" id="amount" min="0" step="0.01" placeholder="0.00" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category"><i class="fas fa-tags"></i> Category</label>
+                            <select id="category" required>
+                                <option value="">Select Category</option>
+                                <option value="Food">Food & Dining</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Bills">Bills & Utilities</option>
+                                <option value="Health">Health</option>
+                                <option value="Education">Education</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn add-btn">
+                        <i class="fas fa-plus"></i> Add Expense
+                    </button>
+                </form>
+            </section>
+
+            <!-- Summary Section -->
+            <section class="summary-section">
+                <div class="summary-card total-card">
+                    <h3><i class="fas fa-chart-pie"></i> Total Expenses</h3>
+                    <p class="amount" id="totalAmount">₹0.00</p>
+                    <p class="count" id="totalCount">0 expenses</p>
+                </div>
+                
+                <div class="summary-card category-card">
+                    <h3><i class="fas fa-filter"></i> Filter by Category</h3>
+                    <div class="category-filters" id="categoryFilters">
+                        <!-- Filter buttons will be added by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expenses List Section -->
+            <section class="expenses-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> All Expenses</h2>
+                    <div class="sort-options">
+                        <button class="sort-btn active" data-sort="date">Recent First</button>
+                        <button class="sort-btn" data-sort="amount-high">Amount (High to Low)</button>
+                        <button class="sort-btn" data-sort="amount-low">Amount (Low to High)</button>
+                    </div>
+                </div>
+                
+                <div class="expenses-list" id="expensesList">
+                    <!-- Expenses will be added here by JavaScript -->
+                    <div class="empty-state">
+                        <i class="fas fa-receipt"></i>
+                        <h3>No expenses yet</h3>
+                        <p>Add your first expense using the form above!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Expense Tracker &copy; <span id="currentYear"></span> | Practice Project for JavaScript Arrays</p>
+            <p class="tip"><i class="fas fa-lightbulb"></i> Tip: Try adding, filtering, and sorting expenses!</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

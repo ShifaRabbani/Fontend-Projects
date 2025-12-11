@@ -1,0 +1,424 @@
+     * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+main {
+    padding: 30px;
+}
+
+/* Add Expense Section */
+.add-expense-section {
+    background-color: #f8f9ff;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 2px dashed #6a11cb;
+}
+
+.add-expense-section h2 {
+    color: #6a11cb;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #6a11cb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Buttons */
+.btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.add-btn {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    width: 100%;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+}
+
+/* Summary Section */
+.summary-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid #6a11cb;
+}
+
+.category-card {
+    border-top-color: #2575fc;
+}
+
+.summary-card h3 {
+    color: #444;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.total-card .amount {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #6a11cb;
+    margin-bottom: 5px;
+}
+
+.total-card .count {
+    color: #777;
+    font-size: 1rem;
+}
+
+/* Category Filters */
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-btn {
+    padding: 10px 18px;
+    background-color: #f0f3ff;
+    border: 2px solid #e0e5ff;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.category-btn:hover {
+    background-color: #e0e5ff;
+    transform: translateY(-2px);
+}
+
+.category-btn.active {
+    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+    color: white;
+    border-color: #2575fc;
+}
+
+/* Expenses Section */
+.expenses-section {
+    background-color: #f8f9ff;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.section-header h2 {
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-options {
+    display: flex;
+    gap: 10px;
+}
+
+.sort-btn {
+    padding: 10px 18px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sort-btn:hover {
+    border-color: #6a11cb;
+    color: #6a11cb;
+}
+
+.sort-btn.active {
+    background-color: #6a11cb;
+    color: white;
+    border-color: #6a11cb;
+}
+
+/* Expenses List */
+.expenses-list {
+    min-height: 300px;
+}
+
+.expense-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #6a11cb;
+    transition: all 0.3s;
+}
+
+.expense-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.expense-item.Food { border-left-color: #ff6b6b; }
+.expense-item.Transport { border-left-color: #4ecdc4; }
+.expense-item.Entertainment { border-left-color: #ffd166; }
+.expense-item.Shopping { border-left-color: #06d6a0; }
+.expense-item.Bills { border-left-color: #118ab2; }
+.expense-item.Health { border-left-color: #ef476f; }
+.expense-item.Education { border-left-color: #7209b7; }
+.expense-item.Other { border-left-color: #8ac926; }
+
+.expense-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.expense-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+}
+
+.Food .expense-icon { background-color: #ff6b6b; }
+.Transport .expense-icon { background-color: #4ecdc4; }
+.Entertainment .expense-icon { background-color: #ffd166; }
+.Shopping .expense-icon { background-color: #06d6a0; }
+.Bills .expense-icon { background-color: #118ab2; }
+.Health .expense-icon { background-color: #ef476f; }
+.Education .expense-icon { background-color: #7209b7; }
+.Other .expense-icon { background-color: #8ac926; }
+
+.expense-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.expense-details p {
+    color: #777;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.expense-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.delete-btn {
+    background-color: #ffeaea;
+    color: #ff6b6b;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 18px;
+}
+
+.delete-btn:hover {
+    background-color: #ff6b6b;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #aaa;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9ff;
+    padding: 25px;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #eee;
+}
+
+footer .tip {
+    margin-top: 10px;
+    font-style: italic;
+    color: #6a11cb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .sort-options {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .expense-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .expense-amount {
+        align-self: flex-end;
+    }
+}
