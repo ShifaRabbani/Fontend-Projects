@@ -279,11 +279,9 @@ const initializeApp = () => {
     
     console.log("Shopping cart initialized!");
 };
-
 // ============================================
 // STEP 8: START THE APPLICATION
 // ============================================
-
 // Wait for HTML to fully load before running JavaScript
 // This prevents errors when trying to access HTML elements
 document.addEventListener("DOMContentLoaded", initializeApp);

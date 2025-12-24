@@ -1,9 +1,12 @@
 // Get all the input boxes and buttons
 let expenses = [];
+
+
 const descriptionInput = document.getElementById('description');
 const amountInput = document.getElementById('amount');
 const categorySelect = document.getElementById('category');
 
+const categories = ['All', 'Food', 'Transport', 'Entertainment', 'Shopping', 'Bills', 'Health', 'Education', 'Other'];
 
 
 // console.log("Got all HTML elements!");
@@ -102,8 +105,148 @@ function calculateTotal() {
     console.log("totalAmount element:", document.getElementById('totalAmount'));
     console.log("totalCount element:", document.getElementById('totalCount'));
 }
-AddExpense();
-deleteExpense();
+// Initialize the app
 displayExpenses();
+createFilterButtons();  // This will create filter buttons
+calculateTotal();       // This will update total display
 
   // Add this call to initialize total on page load
+// *************************FILTER EXPENSES BY CATEGORY*************************
+// ******************FILTER BY CATEGORY*************
+// const categories = ['All', 'Food', 'Transport', 'Entertainment', 'Shopping', 'Bills', 'Health', 'Education', 'Other'];
+let currentFilter = 'All';
+
+function createFilterButtons() {
+    const filterContainer = document.getElementById('categoryFilters'); // FIXED ID
+    filterContainer.innerHTML = '';
+    
+    categories.forEach(category => {
+        const button = document.createElement('button');
+        button.className = 'category-btn'; // ADD CLASS
+        button.textContent = category;
+        button.onclick = () => filterExpenses(category);
+        filterContainer.appendChild(button);
+    });
+}
+
+function filterExpenses(category) {
+    currentFilter = category;
+    const expensesList = document.getElementById('expensesList');
+    expensesList.innerHTML = '';
+    
+    const filteredExpenses = category === 'All' 
+        ? expenses 
+        : expenses.filter(expense => expense.category === category);
+    
+    if (filteredExpenses.length === 0) {
+        expensesList.innerHTML = '<div class="empty-state">No expenses in this category</div>';
+        return;
+    }
+    
+    filteredExpenses.forEach(expense => {
+        const expenseItem = document.createElement('div');
+        expenseItem.className = `expense-item ${expense.category}`; 
+        expenseItem.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div>
+                    <strong>${expense.name}</strong>
+                    <p>${expense.category} • ${expense.date}</p>
+                </div>
+                <div>₹${expense.amount}</div>
+                <button class="delete-btn" onclick="deleteExpense(${expense.id})">X</button>
+            </div>
+        `;
+        expensesList.appendChild(expenseItem);
+    });
+    
+    // Update active button
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent === category) {
+            btn.classList.add('active');
+        }
+    });
+}
+
+// Update displayExpenses to respect filter
+const originalDisplayExpenses = displayExpenses;
+displayExpenses = function() {
+    filterExpenses(currentFilter);
+    calculateTotal();
+};
+
+createFilterButtons();
+
+// console.log("Filter container:", document.getElementById('categoryFilters'));
+// console.log("Categories:", categories);
+// Initialize everything
+document.addEventListener('DOMContentLoaded', function() {
+    displayExpenses();
+    createFilterButtons();
+    calculateTotal();
+});
+// ****************************** SORTING EXPENSES *******************************
+
+// Future enhancement: Implement sorting functionality here
+
+// Sorting function
+function sortExpenses(sortType) {
+    let sortedExpenses = [...expenses]; // Copy array
+    
+    if (sortType === 'amount-high') {
+        sortedExpenses.sort((a, b) => b.amount - a.amount);
+    } else if (sortType === 'amount-low') {
+        sortedExpenses.sort((a, b) => a.amount - b.amount);
+    }
+    // 'date' = keep original order (newest first)
+    
+    // Display sorted expenses
+    displaySortedExpenses(sortedExpenses);
+}
+
+// Display sorted expenses
+function displaySortedExpenses(sortedArray) {
+    const expensesList = document.getElementById('expensesList');
+    expensesList.innerHTML = '';
+    
+    if (sortedArray.length === 0) {
+        expensesList.innerHTML = '<div class="empty-state">No expenses yet</div>';
+        return;
+    }
+    
+    sortedArray.forEach(expense => {
+        const expenseItem = document.createElement('div');
+        expenseItem.className = `expense-item ${expense.category}`;
+        expenseItem.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div>
+                    <strong>${expense.name}</strong>
+                    <p>${expense.category} • ${expense.date}</p>
+                </div>
+                <div>₹${expense.amount}</div>
+                <button class="delete-btn" onclick="deleteExpense(${expense.id})">X</button>
+            </div>
+        `;
+        expensesList.appendChild(expenseItem);
+    });
+}
+
+// Add click events to sort buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const sortButtons = document.querySelectorAll('.sort-btn');
+    
+    sortButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            sortButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            // Get sort type
+            const sortType = this.getAttribute('data-sort');
+            // Sort expenses
+            sortExpenses(sortType);
+        });
+    });
+});
+
+
