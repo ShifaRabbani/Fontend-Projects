@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a1a;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(28, 58, 173, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(200, 30, 100, 0.1) 0%, transparent 20%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Animated Gradient Background */
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(-45deg, #0a0a1a, #1a0a2a, #0a1a2a, #1a2a0a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Title */
+        .title-container {
+            margin-bottom: 40px;
+            animation: fadeInScale 1.5s ease-out;
+        }
+
+        .main-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ff0080, #ff8c00, #40e0d0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 
+                0 0 10px rgba(255, 0, 128, 0.3),
+                0 0 20px rgba(255, 0, 128, 0.2),
+                0 0 30px rgba(255, 0, 128, 0.1);
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            from {
+                text-shadow: 
+                    0 0 10px rgba(255, 0, 128, 0.3),
+                    0 0 20px rgba(255, 0, 128, 0.2),
+                    0 0 30px rgba(255, 0, 128, 0.1);
+            }
+            to {
+                text-shadow: 
+                    0 0 15px rgba(255, 0, 128, 0.5),
+                    0 0 25px rgba(255, 140, 0, 0.3),
+                    0 0 35px rgba(64, 224, 208, 0.2);
+            }
+        }
+
+        .year {
+            font-size: 8rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 
+                0 0 10px #ff0080,
+                0 0 20px #ff0080,
+                0 0 30px #ff0080,
+                0 0 40px #ff0080,
+                0 5px 15px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+            animation: bounce 2s infinite alternate;
+            position: relative;
+        }
+
+        .year:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 5px;
+            background: linear-gradient(to right, #ff0080, #ff8c00, #40e0d0);
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-15px); }
+        }
+
+        /* Countdown Timer */
+        .countdown-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease-out 0.5s both;
+        }
+
+        .countdown-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #ff8c00;
+            font-weight: 600;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px 15px;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .countdown-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #40e0d0;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+        }
+
+        .countdown-label {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Message Section */
+        .message-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease-out 0.8s both;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #e6e6ff;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #ff8c00;
+            font-weight: 700;
+        }
+
+        /* Celebration Buttons */
+        .celebration-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            animation: fadeIn 1.5s ease-out 1s both;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fireworks-btn {
+            background: linear-gradient(to right, #ff0080, #ff8c00);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 0, 128, 0.4);
+        }
+
+        .sparkle-btn {
+            background: linear-gradient(to right, #40e0d0, #20b2aa);
+            color: white;
+            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding: 20px;
+            color: #a0a0ff;
+            font-size: 1rem;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out 1.2s both;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #a0a0ff;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff8c00;
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Fireworks Canvas */
+        #fireworks-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.8rem;
+            }
+
+            .year {
+                font-size: 5rem;
+            }
+
+            .countdown-item {
+                min-width: 90px;
+                padding: 15px 10px;
+            }
+
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+
+            .countdown-label {
+                font-size: 1rem;
+            }
+
+            .message {
+                font-size: 1.3rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .year {
+                font-size: 4rem;
+            }
+
+            .countdown {
+                gap: 10px;
+            }
+
+            .countdown-item {
+                min-width: 70px;
+                padding: 10px 5px;
+            }
+
+            .countdown-value {
+                font-size: 2rem;
+            }
+
+            .message {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Gradient Background -->
+    <div class="background-gradient"></div>
+    
+    <!-- Fireworks Canvas -->
+    <canvas id="fireworks-canvas"></canvas>
+    
+    <!-- Particles Container -->
+    <div class="particles-container" id="particles-container"></div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="title-container">
+            <h1 class="main-title">Happy New Year</h1>
+            <div class="year">2026</div>
+            <p style="font-size: 1.3rem; color: #a0a0ff; max-width: 600px; margin: 0 auto;">
+                Welcome to a new beginning filled with hope, joy, and endless possibilities!
+            </p>
+        </div>
+        
+        <div class="countdown-container">
+            <h2 class="countdown-title">Countdown to New Year's Day</h2>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="message-container">
+            <p class="message">
+                As we step into <span class="highlight">2026</span>, let's embrace new opportunities, cherish old memories, and create a future filled with happiness and success. 
+                May this year bring you peace, prosperity, and countless moments of joy!
+            </p>
+            <p class="message" style="margin-top: 15px;">
+                Wishing you and your loved ones a spectacular year ahead!
+            </p>
+        </div>
+        
+        <div class="celebration-buttons">
+            <button class="btn fireworks-btn" id="fireworks-toggle">
+                <i class="fas fa-fire"></i> Toggle Fireworks
+            </button>
+            <button class="btn sparkle-btn" id="sparkle-toggle">
+                <i class="fas fa-sparkles"></i> Toggle Sparkles
+            </button>
+        </div>
+        
+        <div class="footer">
+            <p>Made with <i class="fas fa-heart" style="color: #ff0080;"></i> to celebrate New Year 2026</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Share this celebration with friends and family!</p>
+            <div class="social-icons">
+                <a href="#" title="Share on Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Share via WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Canvas and context for fireworks
+        const canvas = document.getElementById('fireworks-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas dimensions
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        // Initialize canvas size
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Fireworks variables
+        let fireworks = [];
+        let particles = [];
+        let animationId = null;
+        let fireworksActive = true;
+        let sparklesActive = true;
+        
+        // Particle class for fireworks
+        class Particle {
+            constructor(x, y, color, velocity, size = 2, decay = 0.015) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.velocity = velocity;
+                this.size = size;
+                this.decay = decay;
+                this.alpha = 1;
+                this.gravity = 0.01;
+            }
+            
+            update() {
+                this.velocity.y += this.gravity;
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= this.decay;
+                this.size *= 0.99;
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+        
+        // Firework class
+        class Firework {
+            constructor(x, y, targetX, targetY) {
+                this.x = x;
+                this.y = y;
+                this.targetX = targetX;
+                this.targetY = targetY;
+                this.distance = Math.hypot(targetX - x, targetY - y);
+                this.speed = 4 + Math.random() * 2;
+                this.angle = Math.atan2(targetY - y, targetX - x);
+                this.velocity = {
+                    x: Math.cos(this.angle) * this.speed,
+                    y: Math.sin(this.angle) * this.speed
+                };
+                this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                this.trail = [];
+                this.exploded = false;
+            }
+            
+            update() {
+                // Move firework
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                
+                // Add to trail
+                this.trail.push({x: this.x, y: this.y});
+                if (this.trail.length > 5) this.trail.shift();
+                
+                // Check if reached target
+                const distanceToTarget = Math.hypot(this.targetX - this.x, this.targetY - this.y);
+                
+                if (distanceToTarget < 10 && !this.exploded) {
+                    this.explode();
+                }
+                
+                // Apply gravity
+                this.velocity.y += 0.02;
+            }
+            
+            explode() {
+                this.exploded = true;
+                const particleCount = 80 + Math.random() * 50;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = 2 + Math.random() * 4;
+                    const velocity = {
+                        x: Math.cos(angle) * speed,
+                        y: Math.sin(angle) * speed
+                    };
+                    const size = 1.5 + Math.random() * 2;
+                    const color = this.color;
+                    
+                    particles.push(new Particle(this.x, this.y, color, velocity, size, 0.01));
+                }
+            }
+            
+            draw() {
+                // Draw trail
+                for (let i = 0; i < this.trail.length; i++) {
+                    const point = this.trail[i];
+                    const alpha = i / this.trail.length;
+                    const radius = this.size * alpha;
+                    
+                    ctx.save();
+                    ctx.globalAlpha = alpha;
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+                
+                // Draw firework
+                ctx.save();
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+        
+        // Create a new firework
+        function createFirework() {
+            if (!fireworksActive) return;
+            
+            const startX = Math.random() * canvas.width;
+            const targetX = canvas.width * 0.2 + Math.random() * canvas.width * 0.6;
+            const targetY = canvas.height * 0.2 + Math.random() * canvas.height * 0.3;
+            
+            fireworks.push(new Firework(startX, canvas.height, targetX, targetY));
+        }
+        
+        // Animation loop
+        function animate() {
+            // Clear canvas with a fade effect
+            ctx.fillStyle = 'rgba(10, 10, 26, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Update and draw fireworks
+            for (let i = fireworks.length - 1; i >= 0; i--) {
+                fireworks[i].update();
+                fireworks[i].draw();
+                
+                // Remove exploded fireworks
+                if (fireworks[i].exploded) {
+                    fireworks.splice(i, 1);
+                }
+            }
+            
+            // Update and draw particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Remove faded particles
+                if (particles[i].alpha <= 0) {
+                    particles.splice(i, 1);
+                }
+            }
+            
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        // Start animation
+        animate();
+        
+        // Create fireworks at intervals
+        setInterval(createFirework, 800);
+        
+        // Create occasional random fireworks
+        setInterval(() => {
+            if (fireworksActive && Math.random() > 0.7) {
+                createFirework();
+            }
+        }, 300);
+        
+        // Sparkle particles
+        const particlesContainer = document.getElementById('particles-container');
+        let sparkles = [];
+        
+        function createSparkle() {
+            if (!sparklesActive) return;
+            
+            const sparkle = document.createElement('div');
+            sparkle.className = 'particle';
+            
+            // Random position
+            sparkle.style.left = `${Math.random() * 100}vw`;
+            sparkle.style.top = `${Math.random() * 100}vh`;
+            
+            // Random size and color
+            const size = 2 + Math.random() * 4;
+            sparkle.style.width = `${size}px`;
+            sparkle.style.height = `${size}px`;
+            
+            // Random color
+            const hue = Math.random() * 360;
+            sparkle.style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
+            sparkle.style.boxShadow = `0 0 10px 2px hsl(${hue}, 100%, 50%)`;
+            
+            particlesContainer.appendChild(sparkle);
+            sparkles.push(sparkle);
+            
+            // Remove sparkle after animation
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.remove();
+                    sparkles = sparkles.filter(s => s !== sparkle);
+                }
+            }, 1500 + Math.random() * 1000);
+        }
+        
+        // Create sparkles at intervals
+        setInterval(createSparkle, 100);
+        
+        // Toggle fireworks
+        document.getElementById('fireworks-toggle').addEventListener('click', function() {
+            fireworksActive = !fireworksActive;
+            this.innerHTML = fireworksActive ? 
+                '<i class="fas fa-fire"></i> Hide Fireworks' : 
+                '<i class="fas fa-fire"></i> Show Fireworks';
+            
+            if (!fireworksActive) {
+                // Clear all fireworks and particles
+                fireworks = [];
+                particles = [];
+            }
+        });
+        
+        // Toggle sparkles
+        document.getElementById('sparkle-toggle').addEventListener('click', function() {
+            sparklesActive = !sparklesActive;
+            this.innerHTML = sparklesActive ? 
+                '<i class="fas fa-sparkles"></i> Hide Sparkles' : 
+                '<i class="fas fa-sparkles"></i> Show Sparkles';
+            
+            if (!sparklesActive) {
+                // Remove all sparkles
+                sparkles.forEach(sparkle => sparkle.remove());
+                sparkles = [];
+            }
+        });
+        
+        // Countdown to New Year 2026
+        function updateCountdown() {
+            const now = new Date();
+            const newYear = new Date(now.getFullYear() + 1, 0, 1); // January 1st of next year
+            
+            // If we're already in 2026, set to New Year 2027
+            if (now.getFullYear() >= 2026) {
+                newYear.setFullYear(2027);
+            }
+            
+            const diff = newYear - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+        
+        // Add some initial fireworks for immediate effect
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => createFirework(), i * 200);
+        }
+        
+        // Add some initial sparkles
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => createSparkle(), i * 100);
+        }
+        
+        // Social sharing buttons
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.querySelector('i').className.split(' ')[1];
+                
+                let shareUrl = '';
+                const pageUrl = encodeURIComponent(window.location.href);
+                const text = encodeURIComponent('Check out this awesome Happy New Year 2026 celebration page!');
+                
+                switch(platform) {
+                    case 'fa-facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+                        break;
+                    case 'fa-twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${text}`;
+                        break;
+                    case 'fa-instagram':
+                        alert('To share on Instagram, take a screenshot and post it!');
+                        return;
+                    case 'fa-whatsapp':
+                        shareUrl = `https://wa.me/?text=${text}%20${pageUrl}`;
+                        break;
+                }
+                
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            });
+        });
+    </script>
+</body>
+</html>
