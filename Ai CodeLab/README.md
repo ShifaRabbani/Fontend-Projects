@@ -14,4 +14,4 @@ Welcome to **AI Code Lab**, a platform for beginners and enthusiasts to explore 
 
 1. Clone the repository:  
 ```bash
-git clone https://github.com/your-username/ai-code-lab.git
+git clone https://github.com/ShifaRabbani/Fontend-Projects/tree/main/Ai%20CodeLab
